@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
 
@@ -8,7 +9,10 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-none">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-8 py-4">
+      <motion.div className="max-w-7xl mx-auto flex justify-between items-center px-8 py-4"
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9 }}>
         {/* Logo */}
         <h1 className=" font-sansita font-bold text-4xl text-gray-900 tracking-wide">
           <span className="text-white">Coal</span>
@@ -33,11 +37,14 @@ const Navbar = () => {
         <button onClick={() => setMenu(!menu)} className="md:hidden">
           <i className="fa-solid fa-bars text-white text-2xl"></i>
         </button>
-      </div>
+      </motion.div>
 
       {menu && (
 
-        <div className="md:hidden bg-black bg-opacity-90 text-white px-8 py-6 shadow-2xs shadow-white">
+        <motion.div className="md:hidden bg-black bg-opacity-90 text-white px-8 py-6 shadow-2xs shadow-white"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6,  }}>
           <ul className="flex flex-col gap-6 text-lg font-poppins justify-center items-center  ">
             <li className="cursor-pointer hover:text-yellow-400 active:text-yellow-400 select-none ">Home</li>
             <li className="cursor-pointer hover:text-yellow-4 00 active:text-yellow-400 select-none">About Us</li>
@@ -46,7 +53,7 @@ const Navbar = () => {
             <li className="cursor-pointer hover:text-yellow-400 active:text-yellow-400 select-none">Feedback</li>
           </ul>
 
-        </div>
+        </motion.div>
 
       )}
 
